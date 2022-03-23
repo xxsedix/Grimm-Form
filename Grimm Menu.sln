@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grimm Menu", "Grimm Menu\Grimm Menu.csproj", "{6E9DFA42-D749-49A8-894A-35D1551CC496}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E9DFA42-D749-49A8-894A-35D1551CC496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9DFA42-D749-49A8-894A-35D1551CC496}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9DFA42-D749-49A8-894A-35D1551CC496}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9DFA42-D749-49A8-894A-35D1551CC496}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E627C2A3-AA72-4A89-892F-3E196E882B70}
+	EndGlobalSection
+EndGlobal
