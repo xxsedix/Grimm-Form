@@ -44,6 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.rtbService = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +79,7 @@
             // 
             this.btnsave.Location = new System.Drawing.Point(589, 123);
             this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(91, 33);
+            this.btnsave.Size = new System.Drawing.Size(115, 33);
             this.btnsave.TabIndex = 8;
             this.btnsave.Text = "Append Service";
             this.btnsave.UseVisualStyleBackColor = true;
@@ -194,11 +195,21 @@
             this.rtbService.TabIndex = 17;
             this.rtbService.Text = "";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(591, 103);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(113, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "File to append data to:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 437);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnsave);
@@ -211,6 +222,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -232,5 +244,6 @@
         private System.Windows.Forms.RichTextBox rtbService;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

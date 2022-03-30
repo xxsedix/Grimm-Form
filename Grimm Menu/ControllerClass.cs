@@ -12,14 +12,14 @@ namespace Grimm_Menu
     {
         //Function for adding to txt file
 
-        public static void AddService(string date, string make, string model, string milage, string service)
+        public string AddService(string date, string make, string model, string milage, string service)
         {
             SaveFileDialog dlgSave = new SaveFileDialog();
-            dlgSave.InitialDirectory = "c:\\temp";
+            dlgSave.InitialDirectory = "c:";
             dlgSave.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             dlgSave.FilterIndex = 1;
             dlgSave.RestoreDirectory = true;
-            String fname;
+            String fname; 
             ModelClass modelclass = new ModelClass(date, make, model, milage, service);
             if (dlgSave.ShowDialog() == DialogResult.OK)
             {
@@ -29,10 +29,23 @@ namespace Grimm_Menu
                     writer.WriteLine(modelclass.formatedService());
                 }
                 MessageBox.Show("The file was written.");
-
+                return Update(fname);
             }
+            return null;
         }
 
+        public string Update(string fname)
+        {
+            String text;
+            using (StreamReader reader = new StreamReader(fname))
+            {
+                text = reader.ReadToEnd();
+            }
+            return text;
+        }
+        
+
+        //Function for reading
         public string ReadFile()
         {
             OpenFileDialog dlgOpen = new OpenFileDialog();
@@ -52,10 +65,11 @@ namespace Grimm_Menu
             }
             else
             {
-                return "Error finding text";
+                return "loading";
             }
         }
 
+        //Function for Saving
         public static void SaveFile(string text)
         {
             SaveFileDialog dlgSave = new SaveFileDialog();
@@ -75,9 +89,4 @@ namespace Grimm_Menu
             }
         }
     }
-
-
-
-//Function for saving
-
 }
