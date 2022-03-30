@@ -14,6 +14,8 @@ namespace Grimm_Menu
     public partial class Form1 : Form
     {
         private MenuStrip mainMenu;
+        ControllerClass Cclass = new ControllerClass();
+
         public Form1()
         {
             InitializeComponent();
@@ -26,22 +28,21 @@ namespace Grimm_Menu
             ToolStripMenuItem mnuHelp = new ToolStripMenuItem("Help");
             mainMenu.Items.Add(mnuHelp);
 
-            // adding menu items to the File menu
+
             ToolStripMenuItem miOpen = new ToolStripMenuItem("Open");
             ToolStripMenuItem miSave = new ToolStripMenuItem("Save");
-            ToolStripMenuItem miExit = new ToolStripMenuItem("Exit");
+            ToolStripMenuItem miQuit = new ToolStripMenuItem("Quit");
             mnuFile.DropDownItems.Add(miOpen);
             mnuFile.DropDownItems.Add(miSave);
-            mnuFile.DropDownItems.Add(miExit);
+            mnuFile.DropDownItems.Add(miQuit);
 
-            // add one item to the Help menu
+
             ToolStripMenuItem miAbout = new ToolStripMenuItem("About");
             mnuHelp.DropDownItems.Add(miAbout);
 
-            // set up the event handling. Do this by adding to the Click property for each menu item
-            miOpen.Click += MiOpen_Click;       // specifying the function that will be used to handle clicking on MiOpen
+            miOpen.Click += MiOpen_Click;
             miSave.Click += MiSave_Click;
-            miExit.Click += MiExit_Click;
+            miQuit.Click += MiQuit_Click;
             miAbout.Click += MiAbout_Click;
 
             ContextMenuStrip popup = new ContextMenuStrip();
@@ -57,43 +58,15 @@ namespace Grimm_Menu
 
         private void MiOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlgOpen = new OpenFileDialog();
-            dlgOpen.InitialDirectory = "c:";
-            dlgOpen.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            dlgOpen.FilterIndex = 2;
-            dlgOpen.RestoreDirectory = true;
-            string fname;
-            if (dlgOpen.ShowDialog() == DialogResult.OK)
-            {
-                fname = dlgOpen.FileName;
-                using (StreamReader reader = new StreamReader(fname))
-                {
-                    String text = reader.ReadToEnd();
-                    readrtb.Text = text;
-                }
 
-            }
+            readrtb.Text = Cclass.ReadFile();
         }
 
         private void MiSave_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlgSave = new SaveFileDialog();
-            dlgSave.InitialDirectory = "c:\\temp";
-            dlgSave.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            dlgSave.FilterIndex = 1;
-            dlgSave.RestoreDirectory = true;
-            String fname;  // name of the file the user selected
-            if (dlgSave.ShowDialog() == DialogResult.OK)
-            {
-                fname = dlgSave.FileName;
-                using (StreamWriter writer = new StreamWriter(fname))
-                {
-                    writer.WriteLine(mainrtb.Text);
-                }
-                MessageBox.Show("The file was written.");
-            }
+            ControllerClass.SaveFile(mainrtb.Text);
         }
-        private void MiExit_Click(object sender, EventArgs e)
+        private void MiQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -112,12 +85,6 @@ namespace Grimm_Menu
             mainrtb.Text = mainrtb.Text.ToLower();
         }
 
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClear_Click_1(object sender, EventArgs e)
         {
             mainrtb.Text = "";
@@ -125,26 +92,23 @@ namespace Grimm_Menu
 
         private void btnsave_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlgSave = new SaveFileDialog();
-            dlgSave.InitialDirectory = "c:\\temp";
-            dlgSave.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            dlgSave.FilterIndex = 1;
-            dlgSave.RestoreDirectory = true;
-            String fname;  // name of the file the user selected
-            if (dlgSave.ShowDialog() == DialogResult.OK)
-            {
-                fname = dlgSave.FileName;
-                using (StreamWriter writer = new StreamWriter(fname))
-                {
-                    writer.WriteLine(mainrtb.Text);
-                }
-                MessageBox.Show("The file was written.");
-            }
+            string tb1 = textBox1.Text;
+            string tb2 = textBox2.Text;
+            string tb3 = textBox3.Text;
+            string tb4 = rtbService.Text;
+            string tb5 = textBox4.Text;
+            ControllerClass.AddService(tb5, tb1, tb2, tb3, tb4);
+            Refresh();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             mainrtb.Text = readrtb.Text;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
